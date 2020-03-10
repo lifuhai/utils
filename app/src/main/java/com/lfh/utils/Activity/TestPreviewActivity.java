@@ -30,7 +30,8 @@ public class TestPreviewActivity extends BaseActivity {
                     CommonUtils.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-                            mVaryViewHelper.showDataView();
+//                            mVaryViewHelper.showDataView();
+                            mVaryViewHelper.showErrorView();
 
 //                            mVaryViewHelper.showEmptyView("11111");
 //                            mVaryViewHelper.showEmptyView("123",getResources().getDrawable(R.mipmap.ic_launcher));

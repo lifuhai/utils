@@ -1,11 +1,17 @@
 package com.lfh.frame.preview;
 
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.lfh.frame.R;
 
 
@@ -73,26 +79,27 @@ public class VaryViewHelper {
 
 
     /**
-     *   预加载为空页面  知替换文字
+     * 预加载为空页面  知替换文字
+     *
      * @param text
      */
     public void showEmptyView(String text) {
         mViewHelper.showCaseLayout(mEmptyView);
-        this.text=text;
+        this.text = text;
         empty_tv_text.setText(text);
     }
 
     /**
-     *
-     * @param text   要替换的空文字
-     * @param drawable    要替换的空图片
+     * @param text     要替换的空文字
+     * @param drawable 要替换的空图片
      */
     public void showEmptyView(String text, Drawable drawable) {
         mViewHelper.showCaseLayout(mEmptyView);
-        this.text=text;
+        this.text = text;
         empty_tv_text.setText(text);
         empty_tips_show.setImageDrawable(drawable);
     }
+
     public void showErrorView() {
         mViewHelper.showCaseLayout(mErrorView);
 //        stopProgressLoading();
@@ -105,19 +112,26 @@ public class VaryViewHelper {
 
     public void showDataView() {
         mViewHelper.restoreLayout();
-//        stopProgressLoading();
+        //        stopProgressLoading();
     }
 
-
-    private void stopProgressLoading() {
-
-        Glide.with(imageView.getContext()).asGif().load(R.drawable.loading)
-                .into(imageView);
-    }
 
     private void startProgressLoading() {
+        Glide.with(imageView.getContext()).load(R.drawable.loading).listener(new RequestListener<Drawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                return false;
+            }
 
-        Glide.with(imageView.getContext()).asGif().load(R.drawable.loading)
+            @Override
+            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                if (resource instanceof GifDrawable) {
+                    //加载一次
+                    ((GifDrawable) resource).setLoopCount(1);
+                }
+                return false;
+            }
+        })
                 .into(imageView);
     }
 
@@ -161,19 +175,18 @@ public class VaryViewHelper {
 
         public VaryViewHelper build() {
             VaryViewHelper helper = new VaryViewHelper(mDataView);
-            if(mEmptyView!=null){
-                 helper.setUpEmptyView(mEmptyView);
+            if (mEmptyView != null) {
+                helper.setUpEmptyView(mEmptyView);
             }
-            if(mErrorView!=null){
-                 helper.setUpErrorView(mErrorView, mRefreshListener);
+            if (mErrorView != null) {
+                helper.setUpErrorView(mErrorView, mRefreshListener);
             }
-            if(mLoadingView!=null){
-                 helper.setUpLoadingView(mLoadingView);
+            if (mLoadingView != null) {
+                helper.setUpLoadingView(mLoadingView);
             }
             return helper;
         }
     }
-
 
 
 }
