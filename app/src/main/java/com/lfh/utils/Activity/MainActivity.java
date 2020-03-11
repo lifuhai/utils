@@ -14,21 +14,23 @@ import com.lfh.frame.PackageUtil;
 import com.lfh.frame.TimeUtils;
 import com.lfh.frame.ToastMgr;
 import com.lfh.frame.ZhengZe_ID_And_Phone;
+import com.lfh.utils.Base.BaseActivity;
 import com.lfh.utils.R;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
-
         findViewById(R.id.toast).setOnClickListener(this);
         findViewById(R.id.id_card).setOnClickListener(this);
         findViewById(R.id.phone).setOnClickListener(this);
         findViewById(R.id.preview).setOnClickListener(this);
         findViewById(R.id.getPacke).setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {
@@ -63,4 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+
 }

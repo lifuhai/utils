@@ -2,37 +2,47 @@ package com.lfh.utils.Activity;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.lfh.frame.ListAdapter.Baseadapter;
 import com.lfh.frame.ListAdapter.ViewHolder;
 import com.lfh.utils.Base.BaseActivity;
 import com.lfh.utils.R;
+import com.lfh.utils.adapter.TestAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestPreviewActivity extends BaseActivity {
 
+    private static final String TAG = "TestPreviewActivity";
+    private ListView listView;
+    private TestAdapter adapter;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_test_preview);
         hold(R.id.linear);//绑定view
+        listView = findViewById(R.id.lv_list);
         mVaryViewHelper.showLoadingView();//预加载
+        List<String>list = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            list.add("呵呵"+i);
+        }
+        adapter = new TestAdapter(list,this,R.layout.item_list);
+        listView.setAdapter(adapter);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(2000);
-
                     CommonUtils.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-//                            mVaryViewHelper.showDataView();
                             mVaryViewHelper.showErrorView();
-
 //                            mVaryViewHelper.showEmptyView("11111");
 //                            mVaryViewHelper.showEmptyView("123",getResources().getDrawable(R.mipmap.ic_launcher));
                         }
@@ -43,20 +53,15 @@ public class TestPreviewActivity extends BaseActivity {
             }
         }).start();
 
+    }
 
-
-      ListView listView =  findViewById(R.id.lv_list);
-
-        List<String>list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            list.add("呵呵"+i);
+    boolean flag;
+    @Override
+    public void initData() {
+        super.initData();
+        if (flag) {
+            mVaryViewHelper.showDataView();
         }
-
-        listView.setAdapter(new Baseadapter<String>(list,this,R.layout.item_list) {
-            @Override
-            public void convert(ViewHolder holder, String s) {
-                holder.setText(R.id.tv_lv,s);
-            }
-        });
+        flag =true;
     }
 }

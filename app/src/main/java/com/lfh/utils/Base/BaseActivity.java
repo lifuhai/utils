@@ -11,19 +11,27 @@ import com.lfh.frame.AppManager;
 import com.lfh.frame.preview.VaryViewHelper;
 import com.lfh.utils.R;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     public VaryViewHelper mVaryViewHelper;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppManager.getAppManager().addActivity(this);
+        initView(savedInstanceState);
         initData();
 
     }
 
-    private void initData() {
+    public abstract void initView(Bundle savedInstanceState) ;
 
-    }
+
+    /**
+     *   加载数据
+     *     可实现 可不实现
+     */
+    public  void initData(){
+
+    } ;
 
     public   void hold(int id){
 
@@ -48,6 +56,7 @@ public class BaseActivity extends AppCompatActivity {
         if (mVaryViewHelper != null) {
             mVaryViewHelper.releaseVaryView();
         }
+        AppManager.finishActivity();
 
     }
 
