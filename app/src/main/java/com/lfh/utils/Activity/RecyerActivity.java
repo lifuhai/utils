@@ -2,12 +2,15 @@ package com.lfh.utils.Activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.lfh.frame.ImageUtils;
 import com.lfh.frame.RecyerAdapter.BaseRecyerAdapter;
+import com.lfh.frame.RecyerAdapter.GridSpaceItemDecoration;
 import com.lfh.frame.RecyerAdapter.LinearItemDecoration;
 import com.lfh.frame.ToastMgr;
 import com.lfh.utils.Base.BaseActivity;
@@ -33,15 +36,27 @@ public class RecyerActivity extends BaseActivity {
 
 
 
+        /**
+         *   list 分割线
+         */
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        LinearItemDecoration linearItemDecoration = new LinearItemDecoration();
-        linearItemDecoration.setColor(Color.RED);
-        linearItemDecoration.setSpanSpace(ImageUtils.px2dp(10,this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        LinearItemDecoration linearItemDecoration = new LinearItemDecoration();
+//        linearItemDecoration.setColor(Color.RED);
+//        linearItemDecoration.setSpanSpace(ImageUtils.px2dp(10,this));
+//        recyclerView.addItemDecoration(linearItemDecoration);
+
+
+        /**
+         *   gird 分割线
+         */
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        GridSpaceItemDecoration itemDecoration = new GridSpaceItemDecoration(3, 20, false);
+
+        recyclerView.addItemDecoration(itemDecoration);
 
 
 
-        recyclerView.addItemDecoration(linearItemDecoration);
 
 
 

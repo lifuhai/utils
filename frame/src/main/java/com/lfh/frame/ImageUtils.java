@@ -21,8 +21,8 @@ public class ImageUtils {
 
       public  static  int windowWidth;
       public  static  int windowHeight;
-    /*
-          屏幕宽高
+        /*
+        *  屏幕宽高
         */
     public static  void initWindow(Context context) {
 
