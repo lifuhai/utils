@@ -36,4 +36,11 @@
         android:text="获取包名"></Button>
 
 
+    <Button
+        android:id="@+id/recyer"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="Recyer"></Button>
+
+
 </LinearLayout>

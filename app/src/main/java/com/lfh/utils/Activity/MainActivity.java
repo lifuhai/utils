@@ -1,7 +1,6 @@
 package com.lfh.utils.Activity;
 
 
-
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
@@ -20,7 +19,6 @@ import com.lfh.utils.R;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
-
     @Override
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
@@ -29,6 +27,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.phone).setOnClickListener(this);
         findViewById(R.id.preview).setOnClickListener(this);
         findViewById(R.id.getPacke).setOnClickListener(this);
+        findViewById(R.id.recyer).setOnClickListener(this);
+
     }
 
 
@@ -57,11 +57,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, TestPreviewActivity.class));
                 break;
             case R.id.getPacke:
-
                 Log.d("ccccccccccccc", "onClick: " + PackageUtil.getAppPackageName(this));
-                ToastMgr.builder.display(TimeUtils.getNowTime()+"c cccc"+TimeUtils.stampToDate(System.currentTimeMillis()+""));
+                ToastMgr.builder.display(TimeUtils.getNowTime() + "c cccc" + TimeUtils.stampToDate(System.currentTimeMillis() + ""));
+                break;
+            case R.id.recyer:
 
-
+                startActivity(new Intent(this,RecyerActivity.class));
                 break;
         }
     }
