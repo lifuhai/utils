@@ -43,4 +43,10 @@
         android:text="Recyer"></Button>
 
 
+    <com.lfh.frame.RoundImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        app:shape="circle"></com.lfh.frame.RoundImageView>
+
 </LinearLayout>

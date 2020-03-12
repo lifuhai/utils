@@ -2,11 +2,8 @@ package com.lfh.utils.Activity;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
-import com.lfh.frame.ListAdapter.Baseadapter;
-import com.lfh.frame.ListAdapter.ViewHolder;
 import com.lfh.utils.Base.BaseActivity;
 import com.lfh.utils.R;
 import com.lfh.utils.adapter.TestAdapter;
@@ -42,7 +39,7 @@ public class TestPreviewActivity extends BaseActivity {
                     CommonUtils.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-                            mVaryViewHelper.showErrorView();
+                            mVaryViewHelper.showErrorView(R.drawable.bg_btn);
 //                            mVaryViewHelper.showEmptyView("11111");
 //                            mVaryViewHelper.showEmptyView("123",getResources().getDrawable(R.mipmap.ic_launcher));
                         }
@@ -63,5 +60,11 @@ public class TestPreviewActivity extends BaseActivity {
             mVaryViewHelper.showDataView();
         }
         flag =true;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        listView = null;
     }
 }

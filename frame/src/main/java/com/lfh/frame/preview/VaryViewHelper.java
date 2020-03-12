@@ -42,6 +42,7 @@ public class VaryViewHelper {
     private String text;
     private TextView empty_tv_text;
     private ImageView empty_tips_show;
+    private View btn;
 
     public VaryViewHelper(View view) {
         this(new OverlapViewHelper(view));
@@ -65,7 +66,7 @@ public class VaryViewHelper {
         mErrorView = view;
         mErrorView.setClickable(true);
 
-        View btn = view.findViewById(R.id.vv_error_refresh);
+        btn = view.findViewById(R.id.vv_error_refresh);
         if (btn != null) {
             btn.setOnClickListener(listener);
         }
@@ -105,6 +106,10 @@ public class VaryViewHelper {
 //        stopProgressLoading();
     }
 
+    public void showErrorView(int backgroundRes) {
+        mViewHelper.showCaseLayout(mErrorView);
+        btn.setBackgroundResource(backgroundRes);
+    }
     public void showLoadingView() {
         mViewHelper.showCaseLayout(mLoadingView);
         startProgressLoading();

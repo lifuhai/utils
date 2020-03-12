@@ -33,9 +33,6 @@ public class RecyerActivity extends BaseActivity {
         for (int i = 0; i < 20; i++) {
             list.add("测试"+i);
         }
-
-
-
         /**
          *   list 分割线
          */
@@ -56,10 +53,6 @@ public class RecyerActivity extends BaseActivity {
         recyclerView.addItemDecoration(itemDecoration);
 
 
-
-
-
-
         RecyerAdapter adapter = new RecyerAdapter(this,list,R.layout.item_list);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseRecyerAdapter.OnItemClickListener() {
@@ -77,5 +70,9 @@ public class RecyerActivity extends BaseActivity {
 
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        recyclerView=null;
+    }
 }

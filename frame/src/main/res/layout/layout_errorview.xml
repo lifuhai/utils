@@ -21,7 +21,7 @@
     <Button
         android:id="@+id/vv_error_refresh"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:onClick="refresh"
         android:textSize="12sp"
