@@ -46,9 +46,9 @@ public abstract class Baseadapter<T>extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
        ViewHolder holder =ViewHolder.get(context,convertView,parent,layout_id,position);
 
-    convert(holder,getItem(position));
+    convert(holder,getItem(position),position);
     return  holder.getConvertView();
 }
 
-    public  abstract  void  convert(ViewHolder holder ,T t);
+    public  abstract  void  convert(ViewHolder holder ,T t,int p);
 }

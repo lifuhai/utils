@@ -14,7 +14,7 @@ public class TestAdapter extends Baseadapter<String> {
     }
 
     @Override
-    public void convert(ViewHolder holder, String s) {
+    public void convert(ViewHolder holder, String s,int p) {
         holder.setText(R.id.tv_lv,s);
     }
 }
