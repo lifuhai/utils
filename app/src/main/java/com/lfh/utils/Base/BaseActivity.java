@@ -13,8 +13,9 @@ import com.lfh.utils.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public VaryViewHelper mVaryViewHelper;
+
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppManager.getAppManager().addActivity(this);
         initView(savedInstanceState);
@@ -22,18 +23,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    public abstract void initView(Bundle savedInstanceState) ;
+    public abstract void initView(Bundle savedInstanceState);
 
 
     /**
-     *   加载数据
-     *     可实现 可不实现
+     * 加载数据
+     * 可实现 可不实现
      */
-    public  void initData(){
+    public void initData() {
 
-    } ;
+    }
 
-    public   void hold(int id){
+    public void hold(int id) {
 
         mVaryViewHelper = new VaryViewHelper.Builder()
                 .setDataView(findViewById(id))//放数据的父布局，逻辑处理在该Activity中处理
@@ -47,7 +48,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                 initData();
             }
         });
-    };
+    }
+
+    ;
 
 
     @Override

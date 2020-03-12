@@ -8,19 +8,19 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public  abstract class BaseRecyerAdapter<T> extends RecyclerView.Adapter<RecyerViewHolder> {
+public abstract class BaseRecyerAdapter<T> extends RecyclerView.Adapter<RecyerViewHolder> {
 
     private static final String TAG = "BaseRecyerAdapter";
 
 
     protected Context mContext;
     protected List<T> mDatas;
-    private  int layout_id;
+    private int layout_id;
     protected OnItemClickListener mOnItemClickListener;
 
-    public BaseRecyerAdapter(Context context, List<T> datas,int layoutId) {
+    public BaseRecyerAdapter(Context context, List<T> datas, int layoutId) {
         mContext = context;
-        this.layout_id= layoutId;
+        this.layout_id = layoutId;
         mDatas = datas;
     }
 
@@ -28,15 +28,15 @@ public  abstract class BaseRecyerAdapter<T> extends RecyclerView.Adapter<RecyerV
     public RecyerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         RecyerViewHolder holder = RecyerViewHolder.createViewHolder(mContext, viewGroup, layout_id);
         setListener(viewGroup, holder);
-        return  holder;
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyerViewHolder recyerViewHolder, int i) {
-        convert(recyerViewHolder,mDatas.get(i),i);
+        convert(recyerViewHolder, mDatas.get(i), i);
     }
 
-    public  abstract void convert(RecyerViewHolder recyerViewHolder, T t,int postion) ;
+    public abstract void convert(RecyerViewHolder recyerViewHolder, T t, int postion);
 
     @Override
     public int getItemCount() {
@@ -44,9 +44,9 @@ public  abstract class BaseRecyerAdapter<T> extends RecyclerView.Adapter<RecyerV
     }
 
 
-
     /**
-     *     设置item 监听事件
+     * 设置item 监听事件
+     *
      * @param parent
      * @param viewHolder
      */
@@ -57,7 +57,7 @@ public  abstract class BaseRecyerAdapter<T> extends RecyclerView.Adapter<RecyerV
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
                     int position = viewHolder.getAdapterPosition();
-                    mOnItemClickListener.onItemClick(v, viewHolder , position);
+                    mOnItemClickListener.onItemClick(v, viewHolder, position);
                 }
             }
         });
@@ -75,9 +75,11 @@ public  abstract class BaseRecyerAdapter<T> extends RecyclerView.Adapter<RecyerV
 
 
     public interface OnItemClickListener {
-        void onItemClick(View view, RecyclerView.ViewHolder holder,  int position);
-        boolean onItemLongClick(View view, RecyclerView.ViewHolder holder,  int position);
+        void onItemClick(View view, RecyclerView.ViewHolder holder, int position);
+
+        boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position);
     }
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
