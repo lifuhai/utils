@@ -47,6 +47,22 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:scaleType="centerCrop"
+        android:src="@color/colorPrimaryDark"
         app:shape="circle"></com.lfh.frame.RoundImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textSize="12sp"
+            android:text="你说你喜欢雨，但是在下雨的时候，你却撑起了伞,
+            \n你说你喜欢风，但清风扑面的时候，你却关上了窗户">
+
+        </TextView>
+    </LinearLayout>
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.lfh.utils.Activity;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.lfh.utils.Base.BaseActivity;
@@ -21,6 +22,7 @@ public class TestPreviewActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_test_preview);
+        Log.d(TAG, "initView: 11111111111111111111111");
         hold(R.id.linear);//绑定view
         listView = findViewById(R.id.lv_list);
         mVaryViewHelper.showLoadingView();//预加载
@@ -56,6 +58,7 @@ public class TestPreviewActivity extends BaseActivity {
     @Override
     public void initData() {
         super.initData();
+        Log.d(TAG, "initView: 2222222222222222222222222222");
         if (flag) {
             mVaryViewHelper.showDataView();
         }
