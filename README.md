@@ -1,10 +1,10 @@
-# utils
-常用工具类集合、吐司、预加载view 、 万能适配器 等
+# mvp+组件化demo
+组件化之间跳转用的阿里路由方式跳珠、
+封装了一些常用工具类集合、吐司、预加载view 、 万能适配器 等
 
 #预加载view   base里面封装此方法
 
     public void hold(int id) {
-
         mVaryViewHelper = new VaryViewHelper.Builder()
                 .setDataView(findViewById(id))//放数据的父布局，逻辑处理在该Activity中处理
                 .setLoadingView(LayoutInflater.from(this).inflate(R.layout.layout_loadingview, null))//加载页，无实际逻辑处理
